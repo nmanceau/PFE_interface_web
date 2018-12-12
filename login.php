@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <link href="css/login.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/2-col-portfolio.css" rel="stylesheet">
 
   <title>Mise en place de sondes connectées</title>
 
-  <!-- Custom styles for this template -->
-  <link href="css/login.css" rel="stylesheet">
-  <link href="css/2-col-portfolio.css" rel="stylesheet">
-  
-  <link href="css/boostrap_perso_login.css" rel="stylesheet">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-orange fixed-top">
     <div class="container">
@@ -20,23 +15,30 @@
       <img style=" **margin-top: -55px;**" alt="Logo" src="files/Mirion_Tech.jpg" >
     </div>
   </nav>
+
 </head>
-
-<body class="bg-blue">
-  <div class="modal-dialog">
-    <div class="loginmodal-container">
-      <h1>Login to Your Account</h1><br>
-      <form method="post" action="login.php">
-        <input type="text" name="login" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" name="submit" class="login loginmodal-submit" value="Login">
-      </form>
-
-      <div class="login-help">
-        <a href="#">Register</a> - <a href="mono_sonde.php">Forgot Password</a>
+<body class = "bg-blue">
+  <div class="container">
+    <div class="login-form">
+      <div class="main-div">
+        <div class="panel">
+          <h2>Login</h2>
+          <p>Please enter your name and password</p>
+        </div>
+        <form id="Login" method="post" action="login.php">
+          <div class="form-group">
+            <input type="text" name="login" class="form-control" id="inputEmail" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+          <div class="forgot">
+            <a href="reset.html">Forgot password?</a>
+          </div>
+          <button type="submit" name="submit" class="btn btn-primary" value="Login">Login</button>
+        </form>
       </div>
     </div>
-
 
     <?php
     // Variable de connexion à la base de donnée
@@ -88,13 +90,17 @@
         <h1 class ="titre"> Erreur de Connexion </h1>
         <?php
       }
-
     }
-  }
+    }
 
-  // Fermeture de la connection mysql
-  mysqli_close($connect);
-  ?>
+    // Fermeture de la connection mysql
+    mysqli_close($connect);
+    ?>
 
+
+  </div>
 </div>
-</body>
+
+
+  </body>
+  </html>

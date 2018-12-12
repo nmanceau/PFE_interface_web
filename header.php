@@ -17,7 +17,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-orange fixed-top">
     <a href="#menu-toggle" id="menu-toggle">
-      <img  alt="Logo" src="files/menu.png" width ="40%" class="pull-left">
+      <img  alt="Logo" src="files/menu1.png" width ="40%" class="pull-left">
     </a>
 
     <div class="container">

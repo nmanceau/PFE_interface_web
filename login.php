@@ -40,14 +40,7 @@
               <a href="reset.html">Forgot password?</a>
             </div>
             <?php
-            // Variable de connexion à la base de donnée
-            $host_name = "localhost";
-            $database = "mydb";
-            $user_name = "user";
-            $password = "user";
-
-            // Connection à la base de donnée
-            $connect = mysqli_connect($host_name, $user_name, $password, $database);
+            include('connexion_bd.php');
 
             if(isset($_POST['submit']) AND $_POST['submit']=='Login'){
               // Test si les champs login et password sont mises à 1

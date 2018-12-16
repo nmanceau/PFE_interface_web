@@ -106,8 +106,7 @@ include('header.php');
     </ul>
   </div>
   <!-- /.container -->
-</body>
 
 <?php
-include('header.php');
+include('footer.php');
 ?>

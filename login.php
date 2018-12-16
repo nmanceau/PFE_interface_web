@@ -40,7 +40,7 @@
               <a href="reset.html">Forgot password?</a>
             </div>
             <?php
-            include('connexion_bd.php');
+            include('php/connexion_bd.php');
 
             if(isset($_POST['submit']) AND $_POST['submit']=='Login'){
               // Test si les champs login et password sont mises à 1
@@ -73,10 +73,10 @@
 
               // User = 1
               if($profil_db == 1){
-                header('Location: mono_sonde.php');
+                header('Location: php/mono_sonde.php');
                 // Admin = 2
               }else if($profil_db == 2){
-                header('Location: admin.php');
+                header('Location: php/admin.php');
               }else{
                 ?>
                 <div class="panel">

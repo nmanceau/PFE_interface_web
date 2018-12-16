@@ -1,7 +1,9 @@
+</body>
+
 <!-- Footer -->
-<footer class="py-5 bg-dark">
+<footer class="py-3 bg-dark fixed-bottom">
   <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    <p class="m-0 text-center text-white">Copyright &copy;Nicolas Manceau - 2018</p>
   </div>
   <!-- /.container -->
 </footer>
@@ -12,8 +14,8 @@
 <!-- Menu Toggle Script -->
 <script>
 $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
 });
 </script>
 

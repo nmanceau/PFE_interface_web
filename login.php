@@ -15,7 +15,7 @@
       <div class="mx-auto order-0">
         <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées
           <img style=" **margin-top: -55px;**" width="30%" alt="Logo" src="files/Mirion_Tech.jpg" >
-         </a>
+        </a>
       </div>
     </nav>
   </div>
@@ -97,9 +97,9 @@
           // Fermeture de la connection mysql
           mysqli_close($connect);
           ?>
-            <button type="submit" name="submit" class="btn btn-primary" value="Login">Login</button>
-          </form>
-        </div>
+          <button type="submit" name="submit" class="btn btn-primary" value="Login">Login</button>
+        </form>
+      </div>
 
     </div>
   </div>

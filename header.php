@@ -14,15 +14,18 @@
   <!-- Custom styles for this template -->
   <link href="css/2-col-portfolio.css" rel="stylesheet">
   <link href="css/simple-sidebar.css" rel="stylesheet">
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-orange fixed-top">
-    <a href="#menu-toggle" id="menu-toggle">
-      <img  alt="Logo" src="files/menu1.png" width ="40%" class="pull-left">
-    </a>
-
-    <div class="container">
-      <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées</a>
-      <img style=" **margin-top: -55px;**" alt="Logo" src="files/Mirion_Tech.jpg" >
-    </div>
-  </nav>
 </head>
+</div>
+<body class = "bg-blue">
+  <div class="style_nav">
+    <nav class="navbar navbar-dark bg-orange fixed-top ">
+      <a href="#menu-toggle" id="menu-toggle">
+        <img  alt="Logo" src="files/menu1.png" width ="40%" class="pull-left">
+      </a>
+      <div class="mx-auto order-0">
+        <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées
+          <img style=" **margin-top: -55px;**" width="30%" alt="Logo" src="files/Mirion_Tech.jpg" >
+        </a>
+      </div>
+    </nav>
+  </div>

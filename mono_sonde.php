@@ -1,6 +1,23 @@
-<?php
-include('header.php');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
+  <title>Mise en place de sondes connectées</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Custom styles for this template -->
+  <link href="css/2-col-portfolio.css" rel="stylesheet">
+
+</head>
+
+<?php
 // Variable de connexion à la base de donnée
 $host_name = "localhost";
 $database = "mydb";
@@ -11,121 +28,164 @@ $password = "user";
 $connect = mysqli_connect($host_name, $user_name, $password, $database);
 ?>
 
-<body class="bg-blue">
-  <div id="wrapper">
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="nav-item active sidebar-brand">
-          <li class="nav-item dropdown toggle">
-            <a class="nav-link dropdown-toggle bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Mono Sonde :
-              <span class="sr-only">(current)</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <form method="post" action="mono_sonde.php">
+<body class = "bg-blue">
+  <div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <br />
+        <h3>Paramètres</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <li>
+          <a href="mono_sonde.php">Accueil</a>
+        </li>
+        <br />
+        <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mono sonde</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+              <form method="GET" action="mono_sonde.php">
                 <div class="form-group">
+                  <br/>
                   <label for="choix_serialNumber">Choix de la sonde : </label>
-                  <select class="form-control" value="choix_serialNumber">
+                  <select class="form-control" name="choix_serialNumber" onchange="this.form.submit()">
+                    <option value ="..." selected="selected" readonly="true">...</option>
                     <?php
                     // Lecture Base de donnée
                     $res = $connect->query("SELECT DISTINCT serialNumber from tbl_message");
-                    $res->data_seek(0);
                     // Lecture de chaque ligne dans la base de donnée
-                    while ($row = $res->fetch_assoc()) {
-                      $serialNumber = $row["serialNumber"];
-                      echo  "<option value ="."$serialNumber".">"."$serialNumber"."</option>";
+                    while ($row = mysqli_fetch_array($res)) {
+                      $sn = $row["serialNumber"];
+                      echo  "<option value ="."$sn".">"."$sn"."</option>";
                     }
                     ?>
                   </select>
                 </div>
               </form>
-            </div>
-          </li>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item sidebar-brand">
-          <a class="nav-link bold" href="multi_sondes.php">Multi Sondes</a>
+        <br />
+        <li>
+          <a href="multi_sondes.php">Multi sondes</a>
         </li>
       </ul>
+    </nav>
+
+    <div class="style_nav">
+      <nav class="navbar navbar-dark bg-orange fixed-top ">
+        <button type="button" id="sidebarCollapse" class="btn btn_blue">
+          <img  alt="Logo" src="files/menu1.png" width ="20%" class="pull-left">
+        </button>
+        <div class="mx-auto order-0">
+          <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées
+            <img style=" **margin-top: -55px;**" width="30%" alt="Logo" src="files/Mirion_Tech.jpg" >
+          </a>
+        </div>
+      </nav>
     </div>
-    <!-- /#sidebar-wrapper -->
 
-    <?php
-    /*
-    if(isset($_POST['test'])){
-    $serialNumber_choix = $_POST["choix_serialNumber"];
-    echo "ok";
-  }
-  */
-  $serialNumber_choix = 1;
+    <!-- Page Content  -->
+    <div id="content">
 
-  // Lecture Base de donnée
-  $res = $connect->query("SELECT type, serialNumber, measurement, dateTimeCreated, location from tbl_message WHERE (serialNumber = '$serialNumber_choix') ORDER BY dateTimeCreated desc");
-  $res->data_seek(0);
-  $row = $res->fetch_assoc();
+      <?php
+      $adresse = $_SERVER['PHP_SELF'];
+      $i = 0;
+      foreach($_GET as $cle => $valeur){
+        $adresse .= ($i == 0 ? '?' : '&').$cle.($valeur ? '='.$valeur : '');
+        $i++;
+      }
 
-  // Lecture de chaque ligne dans la base de donnée
-  while ($row = $res->fetch_assoc()) {
-    $serialNumber = $row["serialNumber"];
-    $type = $row["type"];
-    $measurement = $row["measurement"];
-    $dateTimeCreated = $row["dateTimeCreated"];
-    $location = $row["location"];
-  }
+      if($adresse != "/git_PFE/mono_sonde.php"){
 
-  // Fermeture de la connection mysql
-  mysqli_close($connect);
-  ?>
+        $serialNumber_choix = $_GET["choix_serialNumber"];
 
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-    <div class="container-fluid">
+        // Lecture Base de donnée
+        $res = $connect->query("SELECT type, serialNumber, measurement, dateTimeCreated, location from tbl_message WHERE (serialNumber = '$serialNumber_choix') ORDER BY dateTimeCreated desc");
 
-      <!-- Page Heading -->
-      <h1 class="my-4 title_table">Sonde CSP</h1>
+        // Lecture de chaque ligne dans la base de donnée
+        while ($row = mysqli_fetch_array($res)) {
+          $serialNumber = $row["serialNumber"];
+          $type = $row["type"];
+          $measurement = $row["measurement"];
+          $dateTimeCreated = $row["dateTimeCreated"];
+          $location = $row["location"];
+          $location = trim($location);
+        }
 
-      <table class="table" width="50%" diplay="grid">
-        <tbody>
-          <tr>
-            <th scope="row">Type :</th>
-            <td>
-              <input readonly="true" type="text" name="type" value="<?php echo $type ; ?>">
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Numéro de série : </th>
-            <td>
-              <input readonly="true" type="text" name="sn" value="<?php echo $serialNumber ; ?>">
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Mesure en cps : </th>
-            <td>
-              <input readonly="true" type="text" name="mesure" value="<?php echo $measurement ; ?>">
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Coordonées : </th>
-            <td>
-              <input readonly="true" type="text" name="coordonnees" value="<?php echo $location ; ?>">
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Date crée : </th>
-            <td>
-              <input readonly="true" type="text" name="coordonnees" value="<?php echo $dateTimeCreated ; ?>">
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        // Fermeture de la connection mysql
+        mysqli_close($connect);
+      }else{
+        $serialNumber ="";
+        $type = "";
+        $measurement = "";
+        $dateTimeCreated = "";
+        $location = "";
+      }
+      echo"
+      <!-- Page Content -->
+      <div id=\"page-content-wrapper\">
+        <div class=\"container\">
+          <h1 class=\"my-4 title_table\">Sonde CSP</h1>
+
+          <table class=\"table table-bordered thead-dark text-center\">
+            <tbody>
+              <tr>
+                <th scope=\"row\">Type :</th>
+                <td>
+                  <input readonly=\"true\" type=\"text\" name=\"type\" value=".$type.">
+                </td>
+              </tr>
+              <tr>
+                <th scope=\"row\">Numéro de série : </th>
+                <td>
+                  <input readonly=\"true\" type=\"text\" name=\"sn\" value=".$serialNumber.">
+                </td>
+              </tr>
+              <tr>
+                <th scope=\"row\">Mesure en cps : </th>
+                <td>
+                  <input readonly=\"true\" type=\"text\" name=\"mesure\" value=".$measurement.">
+                </td>
+              </tr>
+              <tr>
+                <th scope=\"row\">Coordonées : </th>
+                <td>
+                  <input readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$location.">
+                </td>
+              </tr>
+              <tr>
+                <th scope=\"row\">Date crée : </th>
+                <td>
+                  <input readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$dateTimeCreated.">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>";
+
+      ?>
+
+
     </div>
   </div>
 
-  <!-- /#page-content-wrapper -->
-</div>
-<!-- /#wrapper -->
-</body>
+  <!-- jQuery CDN - Slim version (=without AJAX) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- Popper.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-<?php
-include('footer.php');
-?>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+    });
+  });
+  </script>
+</body>
+</html>

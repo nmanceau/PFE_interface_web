@@ -29,7 +29,10 @@ body {
 .bg-blue {
   background-color:#B3DBFF;
 }
-
+.btn_blue{
+  background:#B3DBFF;
+  width:10%;
+}
 .bold{
   font-weight: bold;
 }
@@ -46,8 +49,15 @@ body {
 
 .table{
   background-color: white;
+  margin: auto;
+  width: 50% !important;
 }
 
-.input{
-  disabled: disabled;
+table th {
+   text-align: left;
+}
+
+.dropdown-menu{
+      width: 300px !important;
+      height: 400px !important;
 }

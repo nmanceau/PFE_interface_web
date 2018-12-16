@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/2-col-portfolio.css" rel="stylesheet">
-  <link href="css/login_test.css" rel="stylesheet">
+  <link href="css/login.css" rel="stylesheet">
 </head>
 
 <body class = "bg-blue">

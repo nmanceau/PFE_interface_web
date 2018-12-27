@@ -41,21 +41,14 @@ include('connexion_bd.php');
           <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gestion base données</a>
           <ul class="collapse list-unstyled" id="homeSubmenu">
             <li>
-              <form method="GET" action="mono_sonde.php">
+              <form method="GET" action="admin_bd.php">
                 <div class="form-group">
                   <br/>
-                  <label for="choix_serialNumber">Choix de la sonde : </label>
-                  <select class="form-control" name="choix_serialNumber" onchange="this.form.submit()">
+                  <label for="choix_serialNumber">Fonctionnalitées : </label>
+                  <select class="form-control" name="choix_fonct" onchange="this.form.submit()">
                     <option value ="..." selected="selected" readonly="true">...</option>
-                    <?php
-                    // Lecture Base de donnée
-                    $res = $connect->query("SELECT DISTINCT serialNumber from tbl_message");
-                    // Lecture de chaque ligne dans la base de donnée
-                    while ($row = mysqli_fetch_array($res)) {
-                      $sn = $row["serialNumber"];
-                      echo  "<option value ="."$sn".">"."$sn"."</option>";
-                    }
-                    ?>
+                    <option value ="visualiser">Visualiser base de données</option>";
+                    <option value ="modifier">Modifier base de données</option>";
                   </select>
                 </div>
               </form>

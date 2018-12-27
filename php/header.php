@@ -29,13 +29,8 @@ include('connexion_bd.php');
         <br />
         <h3>Paramètres</h3>
       </div>
-
       <ul class="list-unstyled components">
         <li>
-          <a href="mono_sonde.php">Accueil</a>
-        </li>
-        <br />
-        <li class="active">
           <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mono sonde</a>
           <ul class="collapse list-unstyled" id="homeSubmenu">
             <li>
@@ -61,8 +56,10 @@ include('connexion_bd.php');
           </ul>
         </li>
         <br />
-        <li>
-          <a href="multi_sondes.php">Multi sondes</a>
+        <li class="active">
+          <li>
+            <a href="multi_sondes.php">Multi sondes</a>
+          </li>
         </li>
       </ul>
     </nav>

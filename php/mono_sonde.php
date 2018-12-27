@@ -43,7 +43,7 @@ include('connexion_bd.php');
   <!-- Page Content -->
   <div id=\"page-content-wrapper\">
   <div class=\"container\">
-  <h1 class=\"my-4 title_table\">Sonde CSP</h1>
+  <h1 class=\"my-4 title_table\">Mono sonde :</h1>
 
   <table class=\"table table-bordered thead-dark text-center\">
   <tbody>

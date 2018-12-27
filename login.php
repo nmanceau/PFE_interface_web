@@ -73,14 +73,14 @@
 
               // User = 1
               if($profil_db == 1){
-                header('Location: php/mono_sonde.php');
+                header('Location: php/multi_sondes.php');
                 // Admin = 2
               }else if($profil_db == 2){
                 header('Location: php/admin.php');
               }else{
                 ?>
                 <div class="panel">
-                  <h2>Please re_enter your name and password</h2>
+                  <h2>Entrer vos identifiants</h2>
                 </div>
                 <?php
               }

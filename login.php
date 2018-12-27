@@ -26,7 +26,7 @@
       <div class="col-sm-4">
         <div class="login-form">
           <div class="panel">
-            <h2>Please enter your name and password</h2>
+            <h2>Veuillez entrer vos identifiants :</h2>
             <br />
           </div>
           <form id="Login" method="post" action="login.php">
@@ -37,7 +37,7 @@
               <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
             <div class="forgot">
-              <a href="reset.html">Forgot password?</a>
+              <a href="reset.html">Mot de passe oublié</a>
             </div>
             <?php
             include('php/connexion_bd.php');
@@ -76,7 +76,7 @@
                 header('Location: php/multi_sondes.php');
                 // Admin = 2
               }else if($profil_db == 2){
-                header('Location: php/admin.php');
+                header('Location: php/admin_users.php');
               }else{
                 ?>
                 <div class="panel">

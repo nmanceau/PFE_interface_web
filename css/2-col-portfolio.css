@@ -61,9 +61,19 @@ body {
 
 table th {
    text-align: left;
+   padding-left: 2%;
 }
 
 .dropdown-menu{
       width: 300px !important;
       height: 400px !important;
+}
+
+.h1_responsive{
+  font-size: 2vw;
+}
+
+.no-border{
+  border: hidden;
+   border: 0;
 }

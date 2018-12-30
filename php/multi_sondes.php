@@ -31,36 +31,36 @@ include('connexion_bd.php');
       echo"
       <div class=\"col-lg-6 portfolio-item\">
       <div class=\"card h-100\">
-      <table class=\"table-multi table-bordered thead-dark text-center\">
+      <table class=\"table-multi table-bordered text-center\" margin=\"2%\">
       <tbody>
       <tr>
       <th scope=\"row\">Type :</th>
       <td>
-      <input readonly=\"true\" type=\"text\" name=\"type\" value=".$type.">
+      <input readonly=\"true\" class=\"no-border\" type=\"text\" name=\"type\" value=".$type.">
       </td>
       </tr>
       <tr>
       <th scope=\"row\">Numéro de série : </th>
       <td>
-      <input readonly=\"true\" type=\"text\" name=\"sn\" value=".$serialNumber.">
+      <input readonly=\"true\" class=\"no-border\" type=\"text\" name=\"sn\" value=".$serialNumber.">
       </td>
       </tr>
       <tr>
       <th scope=\"row\">Mesure en cps : </th>
       <td>
-      <input readonly=\"true\" type=\"text\" name=\"mesure\" value=".$measurement.">
+      <input readonly=\"true\" class=\"no-border\" type=\"text\" name=\"mesure\" value=".$measurement.">
       </td>
       </tr>
       <tr>
       <th scope=\"row\">Coordonées : </th>
       <td>
-      <input readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$location.">
+      <input readonly=\"true\" class=\"no-border\" type=\"text\" name=\"coordonnees\" value=".$location.">
       </td>
       </tr>
       <tr>
       <th scope=\"row\">Date crée : </th>
       <td>
-      <input readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$dateTimeCreated.">
+      <input readonly=\"true\" class=\"no-border\" type=\"text\" name=\"coordonnees\" value=".$dateTimeCreated.">
       </td>
       </tr>
       </tbody>

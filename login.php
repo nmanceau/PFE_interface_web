@@ -36,9 +36,7 @@
             <div class="form-group">
               <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
-            <div class="forgot">
-              <a href="reset.html">Mot de passe oublié</a>
-            </div>
+            <br/>
             <?php
             include('php/connexion_bd.php');
 

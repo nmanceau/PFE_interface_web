@@ -1,6 +1,6 @@
 <?php
-include('header_admin.php');
-include('connexion_bd.php');
+include('includes/header_admin.php');
+//include('connexion_bd.php');
 ?>
 
 <!-- Page Content  -->
@@ -185,5 +185,5 @@ include('connexion_bd.php');
 <?php
 // Fermeture de la connection mysql
 mysqli_close($connect);
-include('footer_admin.php');
+include('includes/footer_admin.php');
 ?>

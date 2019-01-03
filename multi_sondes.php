@@ -1,6 +1,6 @@
 <?php
-include('header.php');
-include('connexion_bd.php');
+include('includes/header.php');
+//include('connexion_bd.php');
 ?>
 
 <!-- Page Content  -->
@@ -78,5 +78,5 @@ include('connexion_bd.php');
 <?php
 // Fermeture de la connection mysql
 mysqli_close($connect);
-include('footer.php');
+include('includes/footer.php');
 ?>

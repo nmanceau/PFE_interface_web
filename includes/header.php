@@ -9,11 +9,11 @@
   <title>Mise en place de sondes connectées</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css">
   <!-- Custom styles for this template -->
-  <link href="../css/2-col-portfolio.css" rel="stylesheet">
+  <link href="css/template.css" rel="stylesheet">
+  <link href="css/user.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 
@@ -66,12 +66,10 @@ include('connexion_bd.php');
 
     <div class="style_nav">
       <nav class="navbar navbar-dark bg-orange fixed-top ">
-
-          <i class="fas fa-align-justify pull-left" id="sidebarCollapse" style='font-size:110%'></i>
-
+        <i class="fas fa-align-justify pull-left" id="sidebarCollapse" style='font-size:110%'></i>
         <div class="mx-auto order-0 h1_responsive">
           <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées
-            <img class="pull_right" style=" **margin-top: -55px;**" width="30%" height="auto" alt="Logo" src="../files/Mirion_Tech.jpg" >
+            <img class="pull_right" style=" **margin-top: -55px;**" width="30%" height="auto" alt="Logo" src="files/Mirion_Tech.jpg" >
           </a>
         </div>
       </nav>

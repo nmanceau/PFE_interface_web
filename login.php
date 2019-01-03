@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/2-col-portfolio.css" rel="stylesheet">
+  <link href="css/template.css" rel="stylesheet">
   <link href="css/login.css" rel="stylesheet">
 </head>
 
@@ -38,7 +38,7 @@
             </div>
             <br/>
             <?php
-            include('php/connexion_bd.php');
+            include('includes/connexion_bd.php');
 
             if(isset($_POST['submit']) AND $_POST['submit']=='Login'){
               // Test si les champs login et password sont mises à 1
@@ -71,10 +71,10 @@
 
               // User = 1
               if($profil_db == 1){
-                header('Location: php/multi_sondes.php');
+                header('Location: multi_sondes.php');
                 // Admin = 2
               }else if($profil_db == 2){
-                header('Location: php/admin_users.php');
+                header('Location: admin_users.php');
               }else{
                 ?>
                 <div class="panel">

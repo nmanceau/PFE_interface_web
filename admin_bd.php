@@ -1,6 +1,6 @@
 <?php
-include('header_admin.php');
-include('connexion_bd.php');
+include('includes/header_admin.php');
+//include('connexion_bd.php');
 ?>
 <!-- Page Content  -->
 <div id="content">
@@ -8,7 +8,7 @@ include('connexion_bd.php');
     <div class="container">
       <?php
       $choix_fonct = "visualiser";
-      
+
       $choix_fonct = trim($_GET["choix_fonct"]);
       if($choix_fonct == "visualiser"){
         ?>
@@ -119,5 +119,5 @@ include('connexion_bd.php');
 <?php
 // Fermeture de la connection mysql
 mysqli_close($connect);
-include('footer_admin.php');
+include('includes/footer_admin.php');
 ?>

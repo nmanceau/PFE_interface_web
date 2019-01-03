@@ -1,6 +1,6 @@
 <?php
-include('header.php');
-include('connexion_bd.php');
+include('includes/header.php');
+//include('connexion_bd.php');
 ?>
 <!-- Page Content  -->
 <div id="content">
@@ -13,7 +13,7 @@ include('connexion_bd.php');
     $i++;
   }
 
-  if($adresse != "/git_PFE/php/mono_sonde.php"){
+  if($adresse != "/git_PFE/mono_sonde.php"){
 
     $serialNumber_choix = $_GET["choix_serialNumber"];
 
@@ -87,5 +87,5 @@ include('connexion_bd.php');
 </div>
 
 <?php
-include('footer.php');
+include('includes/footer.php');
 ?>

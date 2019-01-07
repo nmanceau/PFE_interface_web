@@ -30,7 +30,7 @@ include('includes/header.php');
 
       echo"
       <div class=\"col-lg-6 portfolio-item\">
-      <div class=\"card h-100\">
+      <div class=\"card h-100 table_shadow\">
       <table class=\"table-multi table-bordered text-center\" margin=\"2%\">
       <tbody>
       <tr>

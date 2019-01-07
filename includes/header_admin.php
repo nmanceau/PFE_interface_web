@@ -61,9 +61,8 @@ include('connexion_bd.php');
     <div class="style_nav">
       <nav class="navbar navbar-dark bg-orange fixed-top ">
         <i class="fas fa-align-justify pull-left" id="sidebarCollapse" style='font-size:110%'></i>
-        <div class="mx-auto order-0 h1_responsive">
+        <div class="mx-auto order-0">
           <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées
-            <img class="pull_right" style=" **margin-top: -55px;**" width="30%" height="auto" alt="Logo" src="files/Mirion_Tech.jpg" >
           </a>
         </div>
       </nav>

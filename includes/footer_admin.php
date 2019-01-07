@@ -1,7 +1,7 @@
 </body>
 
 <!-- Footer -->
-<footer class="py-3 bg-dark fixed-bottom">
+<footer class="py-2 bg-dark fixed-bottom footer"> 
   <div class="container">
     <p class="m-0 text-center text-white">Copyright &copy;Nicolas Manceau - 2018</p>
   </div>

@@ -231,9 +231,10 @@ body {
     width: 100% !important;
 }
 
-table th {
+th {
    text-align: left;
    padding-left: 2%;
+   width:70%;
 }
 
 .dropdown-menu{
@@ -242,10 +243,18 @@ table th {
 }
 
 .h1_responsive{
-  font-size: 2vw;
+  font-size: 140%;
+}
+
+.h3_responsive{
+  font-size: 110%;
 }
 
 .no-border{
   border: hidden;
-   border: 0;
+  border: 0;
+}
+
+input{
+  width:auto;
 }

@@ -8,11 +8,11 @@ include('includes/header_admin.php');
     <div class="container">
       <?php
       $choix_fonct = "visualiser";
-
       $choix_fonct = trim($_GET["choix_fonct"]);
       if($choix_fonct == "visualiser"){
         ?>
-        <h1 class="my-4 title_table">Visualiser la base de données :</h1>
+        <h1 class="my-4 title_table h1_responsive">Visualiser la base de données :</h1>
+
         <table class="table table-bordered thead-dark text-center">
           <tr>
             <th> Type </th>
@@ -38,19 +38,19 @@ include('includes/header_admin.php');
               echo"
               <tr>
               <td>
-              <input readonly=\"true\" type=\"text\" name=\"type\" value=".$type.">
+              <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"type\" value=".$type.">
               </td>
               <td>
-              <input readonly=\"true\" type=\"text\" name=\"sn\" value=".$serialNumber.">
+              <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"sn\" value=".$serialNumber.">
               </td>
               <td>
-              <input readonly=\"true\" type=\"text\" name=\"mesure\" value=".$measurement.">
+              <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"mesure\" value=".$measurement.">
               </td>
               <td>
-              <input readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$location.">
+              <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$location.">
               </td>
               <td>
-              <input readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$dateTimeCreated.">
+              <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$dateTimeCreated.">
               </td>
               </tr>
               ";
@@ -58,62 +58,65 @@ include('includes/header_admin.php');
             ?>
           </tbody>
         </table>
-        <?php
-      }else{
-        // Cas 2 : Modification de la base de données
-        ?>
-        <h1 class="my-4 text-center">Modification de la base de données :
-        </h1>
-        <div class="row">
-          <div class="col-lg-6 portfolio-item">
-            <div class="card h-100">
-              <h3 class="my-4 title_table text-center">Suppresion d'une sonde : </h3>
-              <form method="post" action="admin_bd.php">
-                <table class="table-multi table-bordered thead-dark text-center">
-                  <tbody>
-                    <tr>
-                      <th scope="row">Numéro de série de la sonde :</th>
-                      <td>
-                        <input type="text" name="sn">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button type="submit" name="enregistrer_suppr" value ="Enregistrer_suppr" class="btn btn-primary bt_enregistrer ">Enregistrer</button>
-              </form>
+      </div>
+    </div>
+    <?php
+  }else{
+    // Cas 2 : Modification de la base de données
+    ?>
+    <h1 class="my-4 text-center h1_responsive">Modification de la base de données :</h1>
+    <div class="row justify-content-md-center">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="card h-100">
+          <h3 class="my-4 title_table text-center h3_responsive">Suppresion d'une sonde : </h3>
+          <form method="post" action="admin_bd.php">
+            <table class="table-multi table-bordered thead-dark text-center">
+              <tbody>
+                <tr>
+                  <th scope="row">Numéro de série de la sonde :</th>
+                  <td>
+                    <input class="no-border" type="text" name="sn">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br/>
+            <button type="submit" name="enregistrer_suppr" value ="Enregistrer_suppr" class="btn btn-primary bt_enregistrer ">Enregistrer</button>
+          </form>
 
-              <?php
-              // on teste la déclaration de nos variables
-              if (isset($_POST['enregistrer_suppr']) && $_POST['enregistrer_modif']="Enregistrer_suppr") {
-                if(trim($_POST['sn']) != ""){
-                  $sn = trim($_POST['sn']);
+          <?php
+          // on teste la déclaration de nos variables
+          if (isset($_POST['enregistrer_suppr']) && $_POST['enregistrer_modif']="Enregistrer_suppr") {
+            if(trim($_POST['sn']) != ""){
+              $sn = trim($_POST['sn']);
 
-                  $res = $connect->query("SELECT EXISTS (SELECT serialNumber from tbl_message WHERE (serialNumber = '$sn')) AS sonde_exists");
-                  $res->data_seek(0);
-                  $row = $res->fetch_assoc();
+              $res = $connect->query("SELECT EXISTS (SELECT serialNumber from tbl_message WHERE (serialNumber = '$sn')) AS sonde_exists");
+              $res->data_seek(0);
+              $row = $res->fetch_assoc();
 
-                  if ($row['sonde_exists'] == true) {
-                    $req_sonde = $connect->query("DELETE FROM tbl_message WHERE (serialNumber = '$sn')");
-                    echo "<br/><h4 class=\"text-center\">La sonde ".$sn." a été supprimé !</h4><br/>";
-                    $sn = "";
-                  }else{
-                    echo "<br/><h4 class=\"text-center\">La sonde ".$sn." n'existe pas dans la base de données</h4><br/>";
-                  }
-                }else{
-                  echo "<br/><h4 class=\"text-center\">Veuillez entrer le numéro de série de la sonde à supprimer</h4><br/>";
-                }
+              if ($row['sonde_exists'] == true) {
+                $req_sonde = $connect->query("DELETE FROM tbl_message WHERE (serialNumber = '$sn')");
+                echo "<br/><h4 class=\"text-center\">La sonde ".$sn." a été supprimé !</h4><br/>";
+                $sn = "";
+              }else{
+                echo "<br/><h4 class=\"text-center\">La sonde ".$sn." n'existe pas dans la base de données</h4><br/>";
               }
-              ?>
-            </div>
-          </div>
+            }else{
+              echo "<br/><h4 class=\"text-center\">Veuillez entrer le numéro de série de la sonde à supprimer</h4><br/>";
+            }
+          }
+          ?>
+
           <!-- /.col-lg-6 portfolio-item -->
         </div>
         <!-- /.row -->
-        <?php
-      }
-      ?>
+      </div>
     </div>
-  </div>
+    <?php
+  }
+  ?>
+</div>
+</div>
 </div>
 
 <?php

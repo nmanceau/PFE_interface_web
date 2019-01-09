@@ -219,22 +219,23 @@ body {
   text-align: center;
 }
 
-.table{
+.table_perso{
+  background-color: white;
+  border-color: white;
+  margin :0;
+  padding:0;
+}
+
+.table_old{
   background-color: white;
   margin: auto;
-  width: 50% !important;
+  border-color: white;
 }
 
 .table-multi{
   background-color: white;
   margin: auto;
-    width: 100% !important;
-}
-
-th {
-   text-align: left;
-   padding-left: 2%;
-   width:70%;
+  width: 100% !important;
 }
 
 .dropdown-menu{
@@ -256,5 +257,43 @@ th {
 }
 
 input{
-  width:auto;
+  width: auto;
+  text-align: center;
+}
+
+.input_visu{
+  width: 50%;
+}
+
+.input_visu_large{
+  width: 100%;
+}
+
+td{
+  width: 5%;
+}
+
+th {
+   text-align: center;
+   width:auto;
+}
+
+.table_shadow{
+  -moz-box-shadow: 1px 1px 5px 3px #000000;
+  -webkit-box-shadow: 1px 1px 5px 3px #000000;
+  -o-box-shadow: 1px 1px 5px 3px #000000;
+  box-shadow: 1px 1px 5px 3px #000000;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=5);
+}
+
+.menu{
+  font-size:140%;
+  padding : 1%;
+}
+
+i{
+  color:white;
+}
+i:active{
+  color: black;
 }

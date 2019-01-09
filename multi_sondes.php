@@ -5,8 +5,7 @@ include('includes/header.php');
 
 <!-- Page Content  -->
 <div id="content">
-  <h1 class="my-4 text-center">Multi sondes :
-  </h1>
+  <h1 class="my-4 text-center">Multi sondes :</h1>
   <div class="row">
     <?php
     // Recherche toutes les numéros de série différents dans base de donnnées
@@ -31,7 +30,7 @@ include('includes/header.php');
       echo"
       <div class=\"col-lg-6 portfolio-item\">
       <div class=\"card h-100 table_shadow\">
-      <table class=\"table-multi table-bordered text-center\" margin=\"2%\">
+      <table class=\"table-multi table-bordered table-responsive text-center table_perso\" margin=\"2%\">
       <tbody>
       <tr>
       <th scope=\"row\">Type :</th>
@@ -70,8 +69,8 @@ include('includes/header.php');
     }
     ?>
   </div>
+  <br/>
   <!-- /.row -->
-</div>
 </div>
 <!-- /.container -->
 

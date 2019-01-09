@@ -4,8 +4,6 @@ include('includes/header.php');
 ?>
 <!-- Page Content  -->
 <div id="content">
-  <div id="page-content-wrapper">
-    <div class="container">
       <?php
       $adresse = $_SERVER['PHP_SELF'];
       $i = 0;
@@ -43,7 +41,7 @@ include('includes/header.php');
       <div class=\"col-lg-6 col-lg-offset-3 portfolio-item\">
       <h1 class=\"my-4 title_table\">Mono sonde :</h1>
       <div class=\"card h-60 table_shadow\">
-      <table class=\"table-bordered thead-dark text-center\">
+      <table class=\"table-bordered table-responsive text-center table_perso\">
       <tbody>
       <tr>
       <th scope=\"row\">Type :</th>
@@ -81,8 +79,6 @@ include('includes/header.php');
       </div>
       </div>";
       ?>
-    </div>
-  </div>
 </div>
 
 <?php

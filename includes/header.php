@@ -66,7 +66,7 @@ include('connexion_bd.php');
 
     <div class="style_nav">
       <nav class="navbar navbar-dark bg-orange fixed-top ">
-        <i class="fas fa-align-justify pull-left" id="sidebarCollapse" style='font-size:110%'></i>
+        <i class="fas fa-align-justify pull-left menu" id="sidebarCollapse"></i>
         <div class="mx-auto order-0">
           <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées
           </a>

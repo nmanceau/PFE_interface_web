@@ -1,10 +1,3 @@
-.table_shadow{
-  -moz-box-shadow: 1px 1px 12px px #555;
-  -webkit-box-shadow: 1px 1px 12px px #555;
-  -o-box-shadow: 1px 1px 12px px #555;
-  box-shadow: 1px 1px 12px px #555;
-  filter:progid:DXImageTransform.Microsoft.Shadow(color=#555, Direction=134, Strength=12);
-}
 .bouton_bas{
   position: absolute;
   bottom: 0;

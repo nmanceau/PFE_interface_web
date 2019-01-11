@@ -79,62 +79,64 @@ include('includes/header.php');
   ?>
 
   <!-- GRAPHIQUE -->
-  </br>
-  <div class="row justify-content-md-center">
-    <div class="col-lg-6 col-lg-offset-3 portfolio-item">
-      <div id="chart-container" class="card h-60 table_shadow">
-        <canvas id="graphCanvas" class="text-center"></canvas>
-      </div>
+</br>
+<div class="row justify-content-md-center">
+  <div class="col-lg-6 col-lg-offset-3 portfolio-item">
+    <div id="chart-container" class="card h-60 table_shadow">
+      <canvas id="graphCanvas" class="text-center"></canvas>
     </div>
   </div>
+</div>
 
-  <script>
-  $(document).ready(function () {
-    showGraph();
-  });
+<script>
+$(document).ready(function () {
+  showGraph();
+});
 
-  function showGraph()
+var choix_serialNumber = "<?php echo $serialNumber_choix ?>";
+
+function showGraph()
+{
   {
+    $.post("data.php","choix="+ choix_serialNumber,
+    function (data)
     {
-      $.post("data.php",
-      function (data)
-      {
-        console.log(data);
-        var date = [];
-        var measure = [];
+      console.log(data);
+      var date = [];
+      var measure = [];
 
-        for (var i in data) {
-          date.push(data[i].dateTimeCreated);
-          measure.push(data[i].measurement);
-        }
+      for (var i in data) {
+        date.push(data[i].dateTimeCreated);
+        measure.push(data[i].measurement);
+      }
 
-        var chartdata = {
-          labels: date,
-          datasets: [
-            {
-              label: 'Mesure sonde',
-              backgroundColor: '#49e2ff',
-              borderColor: '#46d5f1',
-              hoverBackgroundColor: '#CCCCCC',
-              hoverBorderColor: '#666666',
-              data: measure
-            }
-          ]
-        };
+      var chartdata = {
+        labels: date,
+        datasets: [
+          {
+            label: 'Mesure sonde',
+            backgroundColor: '#ff8c00',
+            borderColor: '#ff8c00',
+            hoverBackgroundColor: '#CCCCCC',
+            hoverBorderColor: '#666666',
+            data: measure
+          }
+        ]
+      };
 
-        var graphTarget = $("#graphCanvas");
+      var graphTarget = $("#graphCanvas");
 
-        var barGraph = new Chart(graphTarget, {
-          type: 'line',
-          data: chartdata,
-          responsive :true
-        });
+      var barGraph = new Chart(graphTarget, {
+        type: 'line',
+        data: chartdata,
+        responsive :true
       });
-    }
+    });
   }
-  </script>
+}
+</script>
 
-  <?php
-  include('includes/footer.php');
+<?php
+include('includes/footer.php');
 
-  ?>
+?>

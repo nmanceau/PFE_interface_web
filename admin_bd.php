@@ -27,14 +27,14 @@ include('includes/header_admin.php');
             <tbody>
               <?php
               // Lecture Base de donnée
-              $res = $connect->query("SELECT type, serialNumber, measurement, dateTimeCreated, location from tbl_message ORDER BY serialNumber asc");
+              $res = $connect->query('SELECT type, serialNumber, measurement, location, DATE_FORMAT(dateTimeCreated, \'%d/%m/%Y à %H:%i:%s\' ) AS dateTimeCreatedFormat from tbl_message ORDER BY serialNumber asc');
 
               // Lecture de chaque ligne dans la base de donnée
               while ($row = mysqli_fetch_array($res)) {
                 $serialNumber = $row["serialNumber"];
                 $type = $row["type"];
                 $measurement = $row["measurement"];
-                $dateTimeCreated = $row["dateTimeCreated"];
+                $dateTimeCreated = $row["dateTimeCreatedFormat"];
                 $location = $row["location"];
                 $location = trim($location);
 
@@ -53,7 +53,7 @@ include('includes/header_admin.php');
                 <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$location.">
                 </td>
                 <td>
-                <input class=\"no-border input_visu_large\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$dateTimeCreated.">
+                <input class=\"no-border input_visu_large\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value='$dateTimeCreated'>
                 </td>
                 </tr>
                 ";

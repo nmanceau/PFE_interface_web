@@ -47,7 +47,8 @@ include('connexion_bd.php');
                   <label for="choix_serialNumber">Fonctionnalitées : </label>
                   <select class="form-control" name="choix_fonct" onchange="this.form.submit()">
                     <option value ="..." selected="selected" readonly="true">...</option>
-                    <option value ="visualiser">Visualiser base de données</option>";
+                    <option value ="visualiser_bd">Visualiser base de données</option>";
+                    <option value ="visualiser_parc">Visualiser parc</option>";
                     <option value ="modifier">Modifier base de données</option>";
                   </select>
                 </div>

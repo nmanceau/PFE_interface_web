@@ -23,7 +23,24 @@ include('includes/header_admin.php');
               <tr>
                 <th scope="row">Profil :</th>
                 <td>
-                  <input class="no-border" type="text" name="profil">
+                  <select class="form-control select_sn" name="choix_profil">
+                    <option value ="..." selected="selected" readonly="true">...</option>
+                    <?php
+                    // Lecture Base de données
+                    $res = $connect->query("SELECT DISTINCT profil from users");
+                    // Lecture de chaque ligne dans la base de donnée
+                    while ($row = mysqli_fetch_array($res)) {
+                      $profil = $row["profil"];
+
+                      if($profil == 1){
+                        $profil = "utilisateur";
+                      }else if($profil == 2){
+                        $profil = "administrateur";
+                      }
+                      echo  "<option value ="."$profil".">"."$profil"."</option>";
+                    }
+                    ?>
+                  </select>
                 </td>
               </tr>
               <tr>
@@ -50,7 +67,7 @@ include('includes/header_admin.php');
           if(trim($_POST['name']) != "" && trim($_POST['mdp']) == trim($_POST['mdp_conf'])){
             $name = trim($_POST['name']);
             $mdp = trim($_POST['mdp']);
-            $profil = trim($_POST['profil']);
+            $profil = trim($_POST['choix_profil']);
 
             $res = $connect->query("SELECT EXISTS (SELECT name from users WHERE (name = '$name' and profil = '$profil')) AS user_exists");
             $res->data_seek(0);
@@ -77,14 +94,25 @@ include('includes/header_admin.php');
   <div class="row justify-content-md-center">
     <div class="col-lg-6 col-lg-offset-3 portfolio-item">
       <div class="card h-100 table_shadow">
-        <h3 class="my-4 title_table text-center h3_responsive table-responsive table_perso">Modification d'un utilisateur : </h3>
+        <h3 class="my-4 title_table text-center h3_responsive">Modification d'un utilisateur : </h3>
         <form method="post" action="admin_users.php">
           <table class="table-multi table-bordered text-center table-responsive table_perso">
             <tbody>
               <tr>
                 <th scope="row">Nom :</th>
                 <td>
-                  <input class="no-border" type="text" name="name">
+                  <select class="form-control select_sn" name="choix_name">
+                    <option value ="..." selected="selected" readonly="true">...</option>
+                    <?php
+                    // Lecture Base de donnée
+                    $res = $connect->query("SELECT DISTINCT name from users");
+                    // Lecture de chaque ligne dans la base de donnée
+                    while ($row = mysqli_fetch_array($res)) {
+                      $name = $row["name"];
+                      echo  "<option value ="."$name".">"."$name"."</option>";
+                    }
+                    ?>
+                  </select>
                 </td>
               </tr>
               <tr>
@@ -109,23 +137,14 @@ include('includes/header_admin.php');
 
         // on teste la déclaration de nos variables
         if (isset($_POST['enregistrer_modif']) && $_POST['enregistrer_modif']="Enregistrer_modif") {
-
-          if(trim($_POST['name']) != "" && trim($_POST['mdp']) == trim($_POST['mdp_conf'])){
-            $name = trim($_POST['name']);
+          if(trim($_POST['mdp']) == trim($_POST['mdp_conf'])){
+            $name = trim($_POST['choix_name']);
             $mdp = trim($_POST['mdp']);
 
-            $res = $connect->query("SELECT EXISTS (SELECT name from users WHERE (name = '$name')) AS user_exists");
-            $res->data_seek(0);
-            $row = $res->fetch_assoc();
-
-            if ($row['user_exists'] == true) {
-              $req_user = $connect->query("UPDATE users SET password ='$mdp' WHERE (name = '$name')");
-              echo "<br/><h4 class=\"text-center\">Le mot de passe de l'utilisateur ".$name." a été modifié !</h4><br/>";
-              $name = "";
-              $mdp = "";
-            }else{
-              echo "<br/><h4 class=\"text-center\">L'utilisateur ".$name." n'existe pas dans la base de données</h4><br/>";
-            }
+            $req_user = $connect->query("UPDATE users SET password ='$mdp' WHERE (name = '$name')");
+            echo "<br/><h4 class=\"text-center\">Le mot de passe de l'utilisateur ".$name." a été modifié !</h4><br/>";
+            $name = "";
+            $mdp = "";
           }else{
             echo "<br/><h4 class=\"text-center\">Un ou plusieurs champs sont erronées</h4><br/>";
           }
@@ -145,7 +164,18 @@ include('includes/header_admin.php');
               <tr>
                 <th scope="row">Nom :</th>
                 <td>
-                  <input class="no-border" type="text" name="name">
+                  <select class="form-control select_sn" name="choix_name">
+                    <option value ="..." selected="selected" readonly="true">...</option>
+                    <?php
+                    // Lecture Base de donnée
+                    $res = $connect->query("SELECT DISTINCT name from users");
+                    // Lecture de chaque ligne dans la base de donnée
+                    while ($row = mysqli_fetch_array($res)) {
+                      $name = $row["name"];
+                      echo  "<option value ="."$name".">"."$name"."</option>";
+                    }
+                    ?>
+                  </select>
                 </td>
               </tr>
             </tbody>
@@ -157,24 +187,20 @@ include('includes/header_admin.php');
         <?php
 
         // on teste la déclaration de nos variables
-        if (isset($_POST['enregistrer_suppr']) && $_POST['enregistrer_modif']="Enregistrer_suppr") {
-          if(trim($_POST['name']) != ""){
-            $name = trim($_POST['name']);
+        if (isset($_POST['enregistrer_suppr']) && $_POST['enregistrer_modif'] = "Enregistrer_suppr") {
+          $name = trim($_POST['choix_name']);
 
-            $res = $connect->query("SELECT EXISTS (SELECT name from users WHERE (name = '$name')) AS user_exists");
-            $res->data_seek(0);
-            $row = $res->fetch_assoc();
+          $res = $connect->query("SELECT EXISTS (SELECT name from users WHERE (name = '$name')) AS user_exists");
+          $res->data_seek(0);
+          $row = $res->fetch_assoc();
 
-            if ($row['user_exists'] == true) {
-              $req_user = $connect->query("DELETE FROM users WHERE (name = '$name')");
-              echo "<br/><h4 class=\"text-center\">L'utilisateur ".$name." a été supprimé !</h4><br/>";
-              $name = "";
-              $mdp = "";
-            }else{
-              echo "<br/><h4 class=\"text-center\">L'utilisateur ".$name." n'existe pas dans la base de données</h4><br/>";
-            }
+          if ($row['user_exists'] == true) {
+            $req_user = $connect->query("DELETE FROM users WHERE (name = '$name')");
+            echo "<br/><h4 class=\"text-center vert\">L'utilisateur ".$name." a été supprimé !</h4><br/>";
+            $name = "";
+            $mdp = "";
           }else{
-            echo "<br/><h4 class=\"text-center\">Veuillez entrer le nom de l'utilisateur à supprimer</h4><br/>";
+            echo "<br/><h4 class=\"text-center rouge\">L'utilisateur ".$name." n'existe pas dans la base de données</h4><br/>";
           }
         }
         ?>
@@ -182,6 +208,7 @@ include('includes/header_admin.php');
     </div>
   </div>
   <!-- /.row -->
+</br>
 </div>
 <!-- /.container -->
 <?php

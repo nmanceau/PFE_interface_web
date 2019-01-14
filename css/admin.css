@@ -5,3 +5,16 @@
 .footer{
   margin-top: 1%;
 }
+
+.rouge{
+  color : red;
+}
+
+.vert{
+  color : green;
+}
+
+.select_sn{
+  width:100%;
+  text-align: center;
+}

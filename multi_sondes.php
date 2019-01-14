@@ -15,7 +15,7 @@ include('includes/header.php');
     while ($row_sn = mysqli_fetch_array($res_sn)) {
       $serialNumber_id = $row_sn['serialNumber'];
       // Lecture Base de donnée
-      $res = $connect->query('SELECT type, serialNumber, measurement, location, DATE_FORMAT(dateTimeCreated, \'%d/%m/%Y à %H:%i:%s\') AS dateTimeCreatedFormat from tbl_message WHERE (serialNumber = '.$serialNumber_id.') ORDER BY dateTimeCreated desc');
+      $res = $connect->query('SELECT type, serialNumber, measurement, location, DATE_FORMAT(dateTimeCreated, \'%d/%m/%Y à %H:%i:%s\') AS dateTimeCreatedFormat from tbl_message WHERE (serialNumber = '.$serialNumber_id.') ORDER BY dateTimeCreated asc');
 
       // Lecture de chaque ligne dans la base de donnée
       while ($row = mysqli_fetch_array($res)) {

@@ -70,10 +70,10 @@
               */
 
               // User = 1
-              if($profil_db == 1){
+              if($profil_db == "utilisateur"){
                 header('Location: multi_sondes.php');
                 // Admin = 2
-              }else if($profil_db == 2){
+              }else if($profil_db == "administrateur"){
                 header('Location: admin_users.php');
               }else{
                 ?>

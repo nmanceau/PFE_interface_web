@@ -4,11 +4,18 @@
   <title>Mise en place de sondes connectées</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
   <link href="css/template.css" rel="stylesheet">
   <link href="css/login.css" rel="stylesheet">
 </head>
 
+<?php
+include('includes/connexion_bd.php');
+include('includes/Securite.php');
+?>
 <body class = "bg-blue">
   <div class="style_nav">
     <nav class="navbar navbar-dark bg-orange fixed-top ">
@@ -38,65 +45,65 @@
             </div>
             <br/>
             <?php
-            include('includes/connexion_bd.php');
+            // Test l'appui sur le bouton submit et test si les champs login et password sont mises à 1
+            if(isset($_POST['submit']) && $_POST['submit']=='Login' && isset($_POST["login"]) && isset($_POST["password"])){
+              // Initialisation des variables
+              $username = $_POST["login"];
+              $password = $_POST["password"];
 
-            if(isset($_POST['submit']) AND $_POST['submit']=='Login'){
-              // Test si les champs login et password sont mises à 1
-              if(isset($_POST["login"]) && isset($_POST["password"])){
-                // Initialisation des variables
-                $username = $_POST["login"];
-                $password = $_POST["password"];
+              // Utilisation de l'algorithme bcrypt par défault
+              $password_hash = password_hash(trim($password), PASSWORD_DEFAULT);
+              // Utilisation de l'affichage du password haché pour entrer en dur le mot de passe hashé en base de données
+              // echo $password_hash;
 
-                // Lecture Base de donnée
-                $res = $connect->query("SELECT EXISTS (SELECT profil from users WHERE (name = '$username' and password = '$password')) AS user_exists");
-                $res->data_seek(0);
-                $row = $res->fetch_assoc();
+              // Test si l'utilisateur existe déjà dans la base de données
+              if($stmt = mysqli_prepare($connect, "SELECT name, password, profil from users WHERE name = ?")){
+                // Lecture des paramètres de marques et utilisation de la classe de sécurité
+                mysqli_stmt_bind_param($stmt, "s", Securite::bdd($connect,$username));
 
-                if ($row['user_exists'] == true) {
-                  $res = $connect->query("SELECT profil from users WHERE (name = '$username' and password = '$password')");
-                  $res->data_seek(0);
-                  $row = $res->fetch_assoc();
-                  $profil_db = $row['profil'];
+                /* Test et exécution de la requête */
+                if(!mysqli_stmt_execute($stmt)){
+                  printf(mysqli_connect_error());
                 }
-                else {
-                  $profil_db = 0;
-                }
+                // Récupération du password hashé et de l'email
+                mysqli_stmt_bind_result($stmt,$nameBdd,$passwordBdd, $profilBdd);
+                // Récupération des valeurs
+                mysqli_stmt_fetch($stmt);
 
-                /*
-                // Lecture de chaque ligne dans la base de donnée
-                while ($row = $res->fetch_assoc()) {
-                $profil_db = $row['profil'];
-              }
-              */
-
-              // User = 1
-              if($profil_db == "utilisateur"){
-                header('Location: multi_sondes.php');
-                // Admin = 2
-              }else if($profil_db == "administrateur"){
-                header('Location: admin_users.php');
+                // Vérification du mot de passe
+                $password_verify = password_verify(trim($password),$passwordBdd);
               }else{
-                ?>
-                <div class="panel">
-                  <h2>Entrer vos identifiants</h2>
-                </div>
-                <?php
+                printf(mysqli_connect_error());
               }
+
+              // Test si l'email de l'utilisateur est en base de données et que son mot de passe est bon
+              if ($nameBdd != "" && $password_verify) {
+                // Test s'il s'agit d'un profil utilisateur
+                if($profilBdd == "utilisateur"){
+                  header('Location: multi_sondes.php');
+                  // Test s'il s'agit d'un profil administrateur
+                }else if($profilBdd == "administrateur"){
+                  header('Location: admin_users.php');
+                }
+                mysqli_stmt_close($stmt);
+              }else {
+                // Affichage d'un message d'erreur si l'identiant et/ ou mot de passe est faux
+                echo "<h4> Votre identifiant et/ou mot de passe est erronées </h4>";
+              }
+
             }
-          }
+            // Fermeture de la connection mysql
+            mysqli_close($connect);
+            ?>
+            <button type="submit" name="submit" class="btn btn-primary" value="Login">Login</button>
+          </form>
+        </div>
 
-          // Fermeture de la connection mysql
-          mysqli_close($connect);
-          ?>
-          <button type="submit" name="submit" class="btn btn-primary" value="Login">Login</button>
-        </form>
       </div>
-
+    </div>
+    <div class="col-sm-4">
     </div>
   </div>
-  <div class="col-sm-4">
-  </div>
-</div>
 
 </body>
 </html>

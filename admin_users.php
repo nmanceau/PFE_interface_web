@@ -1,6 +1,5 @@
 <?php
 include('includes/header_admin.php');
-//include('connexion_bd.php');
 ?>
 
 <!-- Page Content  -->
@@ -73,7 +72,7 @@ include('includes/header_admin.php');
             $res->data_seek(0);
             $row = $res->fetch_assoc();
 
-            if ($row['user_exists'] == false) {
+            if (!$row['user_exists']) {
               $req_user = $connect->query("INSERT INTO users (name, password, profil) VALUES ('$name','$mdp','$profil')");
               echo "<br/><h4 class=\"text-center\">L'utilisateur a été créé !</h4><br/>";
               $name = "";
@@ -194,7 +193,7 @@ include('includes/header_admin.php');
           $res->data_seek(0);
           $row = $res->fetch_assoc();
 
-          if ($row['user_exists'] == true) {
+          if ($row['user_exists']) {
             $req_user = $connect->query("DELETE FROM users WHERE (name = '$name')");
             echo "<br/><h4 class=\"text-center vert\">L'utilisateur ".$name." a été supprimé !</h4><br/>";
             $name = "";

@@ -1,6 +1,5 @@
 <?php
 include('includes/header.php');
-//include('connexion_bd.php');
 ?>
 
 <!-- Page Content  -->

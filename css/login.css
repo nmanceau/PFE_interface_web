@@ -10,9 +10,24 @@ body#LoginForm{
   padding:10px;
 }
 
-.form-heading { color:#fff; font-size:23px;}
-.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
-.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.form-heading {
+  color:#fff;
+  font-size:23px;
+}
+
+.panel h2{
+  color:#444444;
+  font-size:18px;
+  margin:0 0 8px 0;
+}
+
+.panel p {
+  color:#777777;
+  font-size:14px;
+  margin-bottom:30px;
+  line-height:24px;
+}
+
 .login-form .form-control {
   background: #f7f7f7 none repeat scroll 0 0;
   border: 1px solid #d4d4d4;
@@ -21,9 +36,11 @@ body#LoginForm{
   height: 50px;
   line-height: 50px;
 }
+
 .login-form .form-group {
   margin-bottom:10px;
 }
+
 .login-form{
   text-align:center;
   background: #ffffff none repeat scroll 0 0;
@@ -31,11 +48,13 @@ body#LoginForm{
   padding : 5%;
   margin-top:40%;
 }
+
 .forgot a {
   color: #777777;
   font-size: 14px;
   text-decoration: underline;
 }
+
 .login-form  .btn.btn-primary {
   background: #f0ad4e none repeat scroll 0 0;
   border-color: #f0ad4e;
@@ -46,16 +65,32 @@ body#LoginForm{
   line-height: 50px;
   padding: 0;
 }
+
 .forgot {
   text-align: left; margin-bottom:30px;
 }
+
 .botto-text {
   color: #ffffff;
   font-size: 14px;
   margin: auto;
 }
+
 .login-form .btn.btn-primary.reset {
   background: #ff9900 none repeat scroll 0 0;
 }
-.back { text-align: left; margin-top:10px;}
-.back a {color: #444444; font-size: 13px;text-decoration: none;}
+
+.back {
+  text-align: left;
+  margin-top:
+  10px;
+}
+.back a {
+  color: #444444;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+h4{
+  color: red;
+}

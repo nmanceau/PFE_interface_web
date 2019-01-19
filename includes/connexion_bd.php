@@ -3,8 +3,8 @@
 $host_name = "localhost";
 $database = "mydb";
 $user_name = "user";
-$password = "user";
+$mdp = "user";
 
 // Connection à la base de donnée
-$connect = mysqli_connect($host_name, $user_name, $password, $database);
+$connect = mysqli_connect($host_name, $user_name, $mdp, $database);
 ?>

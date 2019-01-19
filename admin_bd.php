@@ -1,6 +1,5 @@
 <?php
 include('includes/header_admin.php');
-//include('connexion_bd.php');
 ?>
 <!-- Page Content  -->
 <div id="content">
@@ -172,7 +171,7 @@ include('includes/header_admin.php');
           $res->data_seek(0);
           $row = $res->fetch_assoc();
 
-          if ($row['sonde_exists'] == true) {
+          if ($row['sonde_exists']) {
             // Suppression dans la table de production : tbl_message
             $req_sonde = $connect->query("DELETE FROM tbl_message WHERE (serialNumber = '$sn')");
             // Suppresio dans la table de gestion de parc : parc

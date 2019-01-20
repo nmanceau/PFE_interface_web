@@ -15,8 +15,6 @@
 <?php
 // Inclusion du fichier de connexion à la base de données
 include('includes/connexion_bd.php');
-// Inclusion di fichier contenant la classe sécurité
-include('includes/Securite.php');
 ?>
 <body class = "bg-blue">
   <!-- style_nav  -->
@@ -65,8 +63,11 @@ include('includes/Securite.php');
 
               // Test si l'utilisateur existe déjà dans la base de données
               if($stmt = mysqli_prepare($connect, "SELECT name, password, profil from users WHERE name = ?")){
-                // Lecture des paramètres de marques et utilisation de la classe de sécurité
-                mysqli_stmt_bind_param($stmt, "s", Securite::bdd($connect,$username));
+                // Protège les caractères spéciaux d'une chaîne pour l'utiliser dans une requête SQL, en prenant en compte le jeu de caractères courant de la connexion
+                $username = mysqli_real_escape_string($connect, $username);
+                $username = addcslashes($username, '%_');
+                // Lecture des paramètres de marques
+                mysqli_stmt_bind_param($stmt, "s", $username);
 
                 // Test et exécution de la requête
                 if(!mysqli_stmt_execute($stmt)){

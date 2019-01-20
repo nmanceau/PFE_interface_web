@@ -134,11 +134,11 @@ include('includes/header_admin.php');
         <div class="card h-100 table_shadow">
           <h3 class="my-4 title_table text-center h3_responsive">Suppresion d'une sonde : </h3>
           <form method="post" action="admin_bd.php?choix_fonct=modifier">
-            <table class="table-multi table-bordered text-center table-responsive table_perso">
+            <table class="table-multi table-bordered text-center table_perso">
               <tbody>
                 <tr>
                   <th scope="row">Numéro de série de la sonde :</th>
-                  <td>
+                  <td class="td_unique">
                     <select class="form-control select_sn" name="choix_serialNumber">
                       <option value ="..." selected="selected" readonly="true">...</option>
                       <?php

@@ -21,9 +21,9 @@
 </head>
 
 <?php
+// Inclusion du fichier de connexion à la base de données
 include('connexion_bd.php');
 ?>
-
 <body class = "bg-blue">
   <div class="wrapper">
     <!-- Sidebar  -->
@@ -44,10 +44,10 @@ include('connexion_bd.php');
                   <select class="form-control" name="choix_serialNumber" onchange="this.form.submit()">
                     <option value ="..." selected="selected" readonly="true">...</option>
                     <?php
-                    // Lecture Base de donnée
-                    $res = $connect->query("SELECT DISTINCT serialNumber from tbl_message");
-                    // Lecture de chaque ligne dans la base de donnée
-                    while ($row = mysqli_fetch_array($res)) {
+                    // Récupération des numéros de série de toutes les sondes pour les afficher dans le menu
+                    $result = mysqli_query($connect,"SELECT DISTINCT serialNumber from tbl_message");
+                    // Lecture de chaque ligne dans la base de données
+                    while ($row = mysqli_fetch_array($result)) {
                       $sn = $row["serialNumber"];
                       echo  "<option value ="."$sn".">"."$sn"."</option>";
                     }
@@ -59,20 +59,20 @@ include('connexion_bd.php');
           </ul>
         </li>
       </li>
-        <br />
-        <li class="active">
-          <li>
-            <a href="multi_sondes.php">Multi sondes</a>
+      <br />
+      <li class="active">
+        <li>
+          <a href="multi_sondes.php">Multi sondes</a>
         </li>
       </ul>
     </nav>
+    <!-- /.Sidebar  -->
 
     <div class="style_nav">
       <nav class="navbar navbar-dark bg-orange fixed-top ">
         <i class="fas fa-align-justify pull-left menu" id="sidebarCollapse"></i>
         <div class="mx-auto order-0">
-          <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées
-          </a>
+          <a class="navbar-brand title_page" href="login.php">Sondes CSP connectées</a>
         </div>
       </nav>
     </div>

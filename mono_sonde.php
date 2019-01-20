@@ -1,38 +1,26 @@
 <?php
+// Inclusion du fichier d'en tête
 include('includes/header.php');
 ?>
 <!-- Page Content  -->
 <div id="content">
   <?php
-  $adresse = $_SERVER['PHP_SELF'];
-  $i = 0;
-  foreach($_GET as $cle => $valeur){
-    $adresse .= ($i == 0 ? '?' : '&').$cle.($valeur ? '='.$valeur : '');
-    $i++;
+  // Récupération du numéro de série de la sonde sléectionnée
+  $serialNumber_choix = $_GET["choix_serialNumber"];
+  // Récupération des informations de la sonde
+  $result = mysqli_query($connect,'SELECT type, serialNumber, measurement, location, DATE_FORMAT(dateTimeCreated, \'%d/%m/%Y à %H:%i:%s\') AS dateTimeCreatedFormat from tbl_message WHERE (serialNumber = '.$serialNumber_choix.') ORDER BY dateTimeCreated asc');
+
+  // Lecture de chaque ligne dans la base de données
+  while ($row = mysqli_fetch_array($result)) {
+    $serialNumber = $row["serialNumber"];
+    $type = $row["type"];
+    $measurement = $row["measurement"];
+    $dateTimeCreated = $row["dateTimeCreatedFormat"];
+    $location = $row["location"];
+    $location = trim($location);
   }
 
-  if($adresse != "/git_PFE/mono_sonde.php"){
-    $serialNumber_choix = $_GET["choix_serialNumber"];
-    // Lecture Base de donnée
-    $res = $connect->query('SELECT type, serialNumber, measurement, location, DATE_FORMAT(dateTimeCreated, \'%d/%m/%Y à %H:%i:%s\') AS dateTimeCreatedFormat from tbl_message WHERE (serialNumber = '.$serialNumber_choix.') ORDER BY dateTimeCreated asc');
-
-    // Lecture de chaque ligne dans la base de donnée
-    while ($row = mysqli_fetch_array($res)) {
-      $serialNumber = $row["serialNumber"];
-      $type = $row["type"];
-      $measurement = $row["measurement"];
-      $dateTimeCreated = $row["dateTimeCreatedFormat"];
-      $location = $row["location"];
-      $location = trim($location);
-    }
-
-  }else{
-    $serialNumber ="";
-    $type = "";
-    $measurement = "";
-    $dateTimeCreated = "";
-    $location = "";
-  }
+  // Affichage du tableau qui contient les informations d'une sonde
   echo"
   <div class=\"row justify-content-md-center\">
   <div class=\"col-lg-6 col-lg-offset-3 portfolio-item\">
@@ -78,15 +66,18 @@ include('includes/header.php');
   ?>
 
   <!-- GRAPHIQUE -->
-</br>
-<div class="row justify-content-md-center">
-  <div class="col-lg-6 col-lg-offset-3 portfolio-item">
-    <div id="chart-container" class="card h-60 table_shadow">
-      <canvas id="graphCanvas" class="text-center"></canvas>
+  </br>
+  <div class="row justify-content-md-center">
+    <div class="col-lg-6 col-lg-offset-3 portfolio-item">
+      <div id="chart-container" class="card h-60 table_shadow">
+        <canvas id="graphCanvas" class="text-center"></canvas>
+      </div>
     </div>
   </div>
 </div>
+<!-- /.Page Content  -->
 
+<!-- Script pour afficher le graphique  -->
 <script>
 $(document).ready(function () {
   showGraph();
@@ -136,6 +127,8 @@ function showGraph()
 </script>
 
 <?php
+// Fermeture de la connection mysql
+mysqli_close($connect);
+// Inclusion du fichier de bas de page
 include('includes/footer.php');
-
 ?>

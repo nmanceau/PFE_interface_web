@@ -297,3 +297,16 @@ i{
 i:active{
   color: black;
 }
+
+.link{
+  color: Darkorange;
+  font-weight:bold;
+}
+
+.rouge{
+  color : red;
+}
+
+.vert{
+  color : green;
+}

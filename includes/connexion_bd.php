@@ -1,10 +1,10 @@
 <?php
-// Variable de connexion à la base de donnée
+// Variable de connexion à la base de données
 $host_name = "localhost";
 $database = "mydb";
 $user_name = "user";
 $mdp = "user";
 
-// Connection à la base de donnée
+// Connexion à la base de données
 $connect = mysqli_connect($host_name, $user_name, $mdp, $database);
 ?>

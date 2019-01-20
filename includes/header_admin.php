@@ -19,9 +19,9 @@
 </head>
 
 <?php
+// Inclusion du fichier de connexion à la base de données
 include('connexion_bd.php');
 ?>
-
 <body class = "bg-blue">
   <div class="wrapper">
     <!-- Sidebar  -->
@@ -58,13 +58,13 @@ include('connexion_bd.php');
         </li>
       </ul>
     </nav>
+    <!-- /.Sidebar  -->
 
     <div class="style_nav">
       <nav class="navbar navbar-dark bg-orange fixed-top ">
         <i class="fas fa-align-justify pull-left" id="sidebarCollapse" style='font-size:110%'></i>
         <div class="mx-auto order-0">
-          <a class="navbar-brand title_page" href="http://www.canberra.com/fr/" target="_blank">Sondes CSP connectées
-          </a>
+          <a class="navbar-brand title_page" href="login.php">Sondes CSP connectées</a>
         </div>
       </nav>
     </div>

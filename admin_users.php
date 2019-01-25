@@ -1,4 +1,8 @@
 <?php
+// Démarrage de la session
+session_start();
+
+if($_SESSION["name"] != ""){
 // Inclusion du fichier d'ne tête
 include('includes/header_admin.php');
 ?>
@@ -225,4 +229,5 @@ include('includes/header_admin.php');
 mysqli_close($connect);
 // Inclusion du fichier de bas de page
 include('includes/footer_admin.php');
+}
 ?>

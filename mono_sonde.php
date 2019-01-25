@@ -1,4 +1,8 @@
 <?php
+// Démarrage de la session
+session_start();
+
+if($_SESSION["name"] != ""){
 // Inclusion du fichier d'en tête
 include('includes/header.php');
 ?>
@@ -131,4 +135,5 @@ function showGraph()
 mysqli_close($connect);
 // Inclusion du fichier de bas de page
 include('includes/footer.php');
+}
 ?>

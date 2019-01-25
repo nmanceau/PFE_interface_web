@@ -15,6 +15,8 @@
 <?php
 // Inclusion du fichier de connexion à la base de données
 include('includes/connexion_bd.php');
+// Démarrage de la session
+session_start();
 ?>
 <body class = "bg-blue">
   <!-- style_nav  -->
@@ -78,6 +80,7 @@ include('includes/connexion_bd.php');
                 // Récupération des valeurs
                 mysqli_stmt_fetch($stmt);
 
+                $_SESSION["name"] = $nameBdd;
                 // Vérification du mot de passe
                 $password_verify = password_verify(trim($password),$passwordBdd);
               }else{
@@ -98,6 +101,8 @@ include('includes/connexion_bd.php');
                 // Affichage d'un message d'erreur si l'identiant et/ ou mot de passe est faux
                 echo "<h4> Votre identifiant et/ou mot de passe est erronées </h4>";
               }
+            }else{
+                $_SESSION["name"] = "";
             }
             // Fermeture de la connection mysql
             mysqli_close($connect);

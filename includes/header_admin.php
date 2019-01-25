@@ -64,7 +64,16 @@ include('connexion_bd.php');
       <nav class="navbar navbar-dark bg-orange fixed-top ">
         <i class="fas fa-align-justify pull-left" id="sidebarCollapse" style='font-size:110%'></i>
         <div class="mx-auto order-0">
-          <a class="navbar-brand title_page" href="login.php">Sondes CSP connectées</a>
+          <a class="navbar-brand title_page" href="admin_users.php">Sondes CSP connectées</a>
         </div>
+        <?php
+        // Gestion de la connection
+          if($_SESSION["name"] != ""){
+            echo "
+            <li class=\"nav-link link_perso\">".$_SESSION["name"]."
+            </li>
+            <a class=\"nav-link link_perso\" href=\"deconnexion.php\">Se déconnecter</a>";
+          }
+          ?>
       </nav>
     </div>

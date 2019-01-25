@@ -15,8 +15,6 @@
 <?php
 // Inclusion du fichier de connexion à la base de données
 include('includes/connexion_bd.php');
-// Inclusion di fichier contenant la classe sécurité
-include('includes/Securite.php');
 // Démarrage de la session
 session_start();
 ?>

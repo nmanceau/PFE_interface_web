@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
   <title>Mise en place de sondes connectées</title>
 
   <!-- Bootstrap core CSS -->
@@ -68,20 +69,18 @@ include('connexion_bd.php');
     </nav>
     <!-- /.Sidebar  -->
 
-    <div class="style_nav">
-      <nav class="navbar navbar-dark bg-orange fixed-top ">
-        <i class="fas fa-align-justify pull-left menu" id="sidebarCollapse"></i>
-        <div class="mx-auto order-0">
-          <a class="navbar-brand title_page" href="multi_sondes.php">Sondes CSP connectées</a>
-        </div>
-        <?php
-        // Gestion de la connection
-          if($_SESSION["name"] != ""){
-            echo "
-            <li class=\"nav-link link_perso\">".$_SESSION["name"]."
-            </li>
-            <a class=\"nav-link link_perso\" href=\"deconnexion.php\">Se déconnecter</a>";
-          }
-          ?>
-      </nav>
-    </div>
+    <nav class="navbar navbar-dark bg-orange fixed-top ">
+      <i class="fas fa-align-justify pull-left menu" id="sidebarCollapse"></i>
+      <div class="mx-auto order-0">
+        <a class="navbar-brand title_page" href="multi_sondes.php">Sondes CSP connectées</a>
+      </div>
+      <?php
+      // Gestion de la connection
+      if($_SESSION["name"] != ""){
+        echo "
+        <li class=\"nav-link link_perso\">".$_SESSION["name"]."
+        </li>
+        <a class=\"nav-link link_perso\" href=\"deconnexion.php\">Se déconnecter</a>";
+      }
+      ?>
+    </nav>

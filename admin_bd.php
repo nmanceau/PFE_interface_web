@@ -189,6 +189,7 @@ include('includes/header_admin.php');
         <tr>
           <th> SN </th>
           <th> Type </th>
+          <th> Topic </th>
           <th> Localisation </th>
           <th> Statut </th>
           <th> Date mise en production </th>
@@ -196,12 +197,13 @@ include('includes/header_admin.php');
         <tbody>
           <?php
           // Lecture de la table parc
-          $result = mysqli_query($connect,'SELECT serialNumber, type, location, status, DATE_FORMAT(dateTimeProduction, \'%d/%m/%Y à %H:%i:%s\' ) AS dateTimeProductionFormat from parc ORDER BY serialNumber asc');
+          $result = mysqli_query($connect,'SELECT serialNumber, type, topic, location, status, DATE_FORMAT(dateTimeProduction, \'%d/%m/%Y à %H:%i:%s\' ) AS dateTimeProductionFormat from parc ORDER BY serialNumber asc');
 
           // Lecture de chaque ligne dans la base de données
           while ($row = mysqli_fetch_array($result)) {
             $serialNumber = $row["serialNumber"];
             $type = $row["type"];
+            $topic = $row["topic"];
             $status= $row["status"];
             $dateTimeProduction = $row["dateTimeProductionFormat"];
             $location = $row["location"];
@@ -217,10 +219,13 @@ include('includes/header_admin.php');
             echo"
             <tr>
             <td>
-            <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"type\" value=".$serialNumber.">
+            <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"sn\" value=".$serialNumber.">
             </td>
             <td>
-            <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"sn\" value=".$type.">
+            <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"type\" value=".$type.">
+            </td>
+            <td>
+            <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"topic\" value=".$topic.">
             </td>
             <td>
             <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"mesure\" value=".$location.">

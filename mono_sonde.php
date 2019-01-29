@@ -51,15 +51,15 @@ include('includes/header.php');
   </td>
   </tr>
   <tr>
-  <th scope=\"row\">Coordonées : </th>
+  <th scope=\"row\">Localisation : </th>
   <td>
-  <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$location.">
+  <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"localisation\" value=".$location.">
   </td>
   </tr>
   <tr>
   <th scope=\"row\">Date crée : </th>
   <td>
-  <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value='$dateTimeCreated'>
+  <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"date\" value='$dateTimeCreated'>
   </td>
   </tr>
   </tbody>

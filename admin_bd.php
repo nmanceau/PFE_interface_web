@@ -26,7 +26,7 @@ include('includes/header_admin.php');
               <th> SN </th>
               <th> Mesure </th>
               <th> Localisation </th>
-              <th> Date enregistrée </th>
+              <th> Date mesure </th>
             </tr>
             <tbody>
               <?php
@@ -55,7 +55,7 @@ include('includes/header_admin.php');
                 <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"mesure\" value=".$measurement.">
                 </td>
                 <td>
-                <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value=".$location.">
+                <input class=\"no-border input_visu\" readonly=\"true\" type=\"text\" name=\"location\" value=".$location.">
                 </td>
                 <td>
                 <input class=\"no-border input_visu_large\" readonly=\"true\" type=\"text\" name=\"coordonnees\" value='$dateTimeCreated'>

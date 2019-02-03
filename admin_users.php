@@ -179,7 +179,7 @@ include('includes/header_admin.php');
   <div class="row justify-content-md-center">
     <div class="col-lg-6 col-lg-offset-3 portfolio-item">
       <div class="card h-100 table_shadow">
-        <h3 class="my-4 title_table text-center h3_responsive">Suppresion d'un utilisateur : </h3>
+        <h3 class="my-4 title_table text-center h3_responsive">Suppression d'un utilisateur : </h3>
         <form method="post" action="admin_users.php">
           <table class="table-multi table-bordered text-center table_perso">
             <tbody>

@@ -57,7 +57,7 @@ include('includes/header.php');
   </td>
   </tr>
   <tr>
-  <th scope=\"row\">Date crée : </th>
+  <th scope=\"row\">Date mesure : </th>
   <td>
   <input class=\"no-border\" readonly=\"true\" type=\"text\" name=\"date\" value='$dateTimeCreated'>
   </td>
